@@ -1,0 +1,22 @@
+Launch Python Script on Startup
+
+cd PiCar
+then:
+nano launcher.sh
+Will launch your editor, type in this script
+
+#!/bin/sh
+# launcher.sh
+# navigate to home directory, then to this directory, then execute python script, then back home
+
+cd /
+cd home/pi/PiCar
+sudo python keyboard.py
+cd /
+
+chmod 755 launcher.sh
+Now test it, by typing in:
+sh launcher.sh
+
+sudo crontab -e
+@reboot sh /home/pi/PiCar/launcher.sh >/home/pi/PiCar/logs/cronlog 2>&1
